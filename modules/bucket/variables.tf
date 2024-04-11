@@ -22,3 +22,16 @@ variable "dual_region_locations" {
 variable "force_destroy" {
     default = true
 }
+
+
+variable "notifications" {
+    description = "List of notification configurations for the bucket to send to PubSub/ when updated"
+    type = list(object({
+        topic              = string
+        custom_attributes  = optional(map(string), {})
+        event_types        = optional(list(string), ["OBJECT_FINALIZE"])
+        payload_format     = optional(string, "JSON_API_V1")
+        object_name_prefix = optional(string, null)
+    }))
+    default = []
+}
