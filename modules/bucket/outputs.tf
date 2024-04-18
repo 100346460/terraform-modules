@@ -11,6 +11,11 @@ output "url" {
     value = google_storage_bucket.test_bucket.url
 }
 
+
+output "bucket_topic" {
+    value = google_storage_notification.bucket_notification.topic
+}
+
 /*
 output "notifications" {
     description = "The list of Storage Notifcations on the bucket"

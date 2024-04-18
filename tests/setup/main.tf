@@ -3,7 +3,6 @@ provider "google" {
 }
 
 
-
 module "bucket" {
   source = "../../modules/bucket"
   location = "US"
@@ -23,6 +22,15 @@ resource "google_storage_bucket_object" "example_object" {
   source = local_file.example_file.filename
 }
 
+resource "google_pubsub_subscription" "storage_subscription" {
+  name   = "storage-subscription"
+  topic  = "default-notification-topic"
+  # Configure the subscription to pull messages
+  ack_deadline_seconds = 30  # Adjust as needed
+}
+
+
 output "setup_bucket_name" {
   value = module.bucket.name
 }
+
