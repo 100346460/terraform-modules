@@ -11,7 +11,9 @@ output "url" {
     value = google_storage_bucket.test_bucket.url
 }
 
+/*
 output "notifications" {
     description = "The list of Storage Notifcations on the bucket"
     value = [for n in google_storage_notification.notifications: n.notification_id]
 }
+*/

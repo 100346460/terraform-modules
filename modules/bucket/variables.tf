@@ -24,6 +24,11 @@ variable "force_destroy" {
 }
 
 
+variable "members" {
+    type = list(string)
+    default = []
+}
+
 variable "notifications" {
     description = "List of notification configurations for the bucket to send to PubSub/ when updated"
     type = list(object({
